@@ -1,0 +1,46 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous"></script>
+
+
+<div id="app">
+    <h1>List of users</h1>
+    <ul>
+        <li v-for="user in users" v-on:click="selectUser(user)">
+            {{ user.name }}
+        </li>
+    </ul>
+    <div>
+        {{user.id}} {{user.name}} {{user.email}} {{user.address}}
+    </div>
+</div>
+
+
+
+<script>
+    var v = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            isDanger: false,
+            users: [],
+            user: ""
+
+        },
+        mounted() {
+            fetch("http://jsonplaceholder.typicode.com/users")
+                .then(response => response.json())
+                .then((data) => {
+                    this.users = data;
+                })
+        },
+        methods: {
+            selectUser: function (user) {
+                this.user = user;
+            }
+        }
+
+    });
+
+
+</script>

@@ -1,8 +1,10 @@
-# VueJsSample
+In the integrated terminal:
+1. to create a package.json file
+    npm init
+2. to add eslint globally
+    npm install eslint -g
+3. init eslint
+    eslint --init
 
 
-
-
-https://www.youtube.com/watch?v=j1EWDbXtbjA
-
-https://vuetifyjs.com
+This does not seem to work, need to review.
