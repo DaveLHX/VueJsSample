@@ -5,9 +5,14 @@ https://vuejs.org/v2/guide/index.html#What-is-Vue-js
 
 
 ### Présentation
-la présentation focus que sur la librairie UI de vue.js. (copie presque conform de ce qui se trouve dans le vidéo d'acceuil du site vue.js)
+la présentation focus sur la librairie UI de vue.js. 
+(copie presque intégrale de ce qui se trouve dans le vidéo d'acceuil du site vue.js)
 
 https://vue-test-utils.vuejs.org/
+
+https://vuejs.org/v2/guide/single-file-components.html
+https://codesandbox.io/s/o29j95wx9
+
 
 ### Liens intéressants 
 https://vuejs.org/v2/guide/comparison.html
