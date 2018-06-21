@@ -7,14 +7,19 @@
 </div>
 
 
+<template id="blogPost">
+        <div class="post">
+                <div><span>{{id}}.</span><h3 class="title">{{title}}</h3></div>
+                <div class="body">{{body}}</div>
+        </div>
+</template>      
+
 <script>
     Vue.component('my-component', {
-        template: `<div class="post">
-                    <div><span>{{id}}.</span><h3 class="title">{{title}}</h3></div>
-                    <div class="body">{{body}}</div>
-                  </div>`,
+        template: '#blogPost',
         props: ['title', 'id', 'body']
     });
+
     var v = new Vue({
         el: '#app',
         data: {          
