@@ -1,0 +1,39 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="product in products" v-bind:class="{low: product.quantity <= 2}"><!-- -->            
+            {{ product.quantity}} {{ product.name}}
+            <span v-if="product.quantity===0"> - OUT OF STOCK</span><!-- -->            
+        </li>
+    </ul>
+    <h2>Total Inventory: {{totalProducts}}</h2>
+</div>
+
+<script>
+    const app = new Vue(
+        {
+            el: '#app',
+            data: {
+                products: []
+            },
+            created() {
+                fetch('https://api.myjson.com/bins/74l63')
+                    .then(response => response.json())
+                    .then(json => { this.products = json.products })
+            },
+            computed: {
+                totalProducts() {
+                    return this.products.reduce((sum, product) => {
+                        return sum + product.quantity
+                    }, 0)
+                }
+            }
+        }
+    )
+</script>
+<style>
+    .low {
+        color: orangered
+    }
+</style>

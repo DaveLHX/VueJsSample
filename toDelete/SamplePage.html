@@ -1,0 +1,99 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous"></script>
+
+
+<div id="app">
+    <h1>Status: Danger is {{ isDanger }}</h1>
+    <h1 v-once>Status: Danger is {{ isDanger }}</h1>
+    <h3 v-bind:class="{myCssClass: isDanger}">{{ message }}</h3>
+    <p>{{reversedMessage}}</p>
+    <div>
+        <input type="text" v-model="message">
+    </div>
+    <br/>
+    <button id="myButton">
+        Change state
+    </button>
+    <button @click="changeState">
+        Chagne state
+    </button>
+
+    <ul>
+        <li v-for="item in items">
+            {{ item.itemText }}
+        </li>
+    </ul> 
+   
+    <ul>
+        <list-item v-for="item in items" :text="item.itemText" otherprop="whahoo!"></list-item>
+    </ul>
+</div>
+
+
+
+<script>
+    Vue.component('list-item', {
+        props: ['text','otherprop'],
+        template: '<li>{{ text }} {{ otherprop }}</li>'
+    });
+
+
+    var v = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            isDanger: false,
+            items: [
+                { itemText: 'Foo' },
+                { itemText: 'Bar' },
+                { itemText: 'Fee' },
+                { itemText: 'Fie' },
+                { itemText: 'Foe' },
+                { itemText: 'Fum' }
+            ]
+
+        },
+        computed: {
+            reversedMessage: function () {
+                // `this` points to the vm instance
+                return this.message.split('').reverse().join('')
+            }
+        },
+        methods: {
+            changeState() {
+                this.isDanger = !this.isDanger;
+                if (this.isDanger) {
+                    this.message = 'DANGER DANGER DANGER!!!!';
+                    this.items.push({ itemText: 'DANGER!!' });
+                }
+                else {
+                    this.message = 'Hello Vue.js!';
+                    this.items.push({ itemText: 'Safe!' });
+                }
+            }
+        }
+    });
+
+
+
+    $(function () {
+        $("#myButton").click(function () {
+            v.isDanger = !v.isDanger;
+            if (v.isDanger) {
+                v.message = 'DANGER DANGER DANGER!!!!';
+                v.items.push({ itemText: 'DANGER!!' });
+            }
+            else {
+                v.message = 'Hello Vue.js!';
+                v.items.push({ itemText: 'Safe!' });
+            }
+        })
+    });
+</script>
+<style>
+    .myCssClass {
+        color: maroon;
+        font-weight: bold;
+    }
+</style>

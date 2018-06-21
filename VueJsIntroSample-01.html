@@ -1,0 +1,27 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    {{ testitem }}
+    <ul>
+        <li v-for="product in products">
+            {{ product }}
+        </li>
+    </ul>
+</div>
+
+
+
+<script>
+    const app = new Vue(
+        {
+            el: '#app',
+            data:{
+                products:['boot','hat'],
+                testitem:"Hello"
+            }
+        }
+    )
+</script>
+
+
+<!-- In console try app.testitem = "vue.js" -->
